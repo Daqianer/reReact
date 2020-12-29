@@ -13,7 +13,7 @@ class Counter extends Component {
         </span>
         <button
           onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-sm m-2"
         >
           Increment
         </button>
@@ -29,7 +29,7 @@ class Counter extends Component {
 
   getBadgeClasses() {
     const count = this.props.counter.value;
-    let classes = "badge m-2 badge-";
+    let classes = "badge badge-";
     classes += count === 0 ? "warning" : "primary";
 
     return classes;
