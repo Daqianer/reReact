@@ -2,8 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: this.props.value,
-    tags: ["tag1", "tag2", "tag3"],
+    count: this.props.counter.value,
   };
 
   styles = {
@@ -23,25 +22,13 @@ class Counter extends Component {
           Increment
         </button>
         <button
-          onClick={() => this.props.onDelete()}
+          onClick={() => this.props.onDelete(this.props.counter.id)}
           className="btn btn-sm btn-danger"
         >
           Delete
         </button>
-        {this.renderTags()}
       </div>
     );
-  }
-
-  renderTags() {
-    // if (this.state.tags.length === 0) return <p>You can create new tag</p>;
-    // return (
-    //   <ul>
-    //     {this.state.tags.map((item) => {
-    //       return <li key={item}>{item}</li>;
-    //     })}
-    //   </ul>
-    // );
   }
 
   getBadgeClasses() {
