@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
-import Counters from './components/counters.jsx';
-import Navbar from './components/navbar.jsx'
+import React, { Component } from "react";
+import "./App.css";
+import Counters from "./components/counters.jsx";
+import Navbar from "./components/navbar.jsx";
 
 class App extends Component {
   state = {
@@ -12,8 +12,15 @@ class App extends Component {
       { id: 4, value: 8 },
     ],
   };
+  constructor() {
+    super();
+    console.log("APP - constructor");
+  }
 
-  
+  componentDidMount() {
+    console.log("App - mounted");
+  }
+
   handleDelete = (counterId) => {
     console.log("Event handler Called", counterId);
     const counters = this.state.counters.filter((c) => c.id !== counterId);
@@ -30,29 +37,32 @@ class App extends Component {
   };
 
   handleIncrement = (counter) => {
-    console.log(counter);
+    // console.log(counter);
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
     counters[index].value++;
     this.setState({ counters });
   };
- 
-  render() { 
-    return (  
+
+  render() {
+    console.log("App - rendered");
+    return (
       <React.Fragment>
-      <Navbar countersNum={this.state.counters.filter(c => c.value !== 0).length}/>
-      <main className="container">
+        <Navbar
+          countersNum={this.state.counters.filter((c) => c.value !== 0).length}
+        />
+        <main className="container">
           <Counters
             counters={this.state.counters}
             onDelete={this.handleDelete}
             onIncrement={this.handleIncrement}
             onReset={this.handleReset}
           />
-      </main>
-    </React.Fragment> 
+        </main>
+      </React.Fragment>
     );
   }
 }
- 
+
 export default App;

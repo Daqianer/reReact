@@ -4,8 +4,19 @@ class Counter extends Component {
   styles = {
     fontSize: 20,
   };
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps, "this", this.props);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      // 进行必要的更新
+      console.log("!==");
+    }
+  }
+  componentWillUnmount() {
+    console.log("Counter - unmount");
+  }
   render() {
-    // console.log(this.props);
+    console.log("Counter - Rendered");
     return (
       <div>
         <span style={this.styles} className={this.getBadgeClasses()}>
